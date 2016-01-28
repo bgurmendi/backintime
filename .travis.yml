@@ -6,6 +6,9 @@ language: python
 # ensures that we have UUID filesystem mounts for proper testing
 sudo: true
 
+#addons:
+#  ssh_known_hosts: localhost
+
 python:
   - "3.4"
   - "3.5"
@@ -14,6 +17,11 @@ python:
 
 install:
   - pip install coveralls
+  - ls -al ~/.ssh | echo "0"
+  - ssh-keygen -b 2048 -t rsa -f /home/travis/.ssh/id_rsa -N ""
+  - ls -al ~/.ssh
+  - ssh-keyscan -H localhost >> ~/.ssh/known_hosts
+  - ssh localhost date
 
 script:
   # compile all files - ensure that syntax is correct

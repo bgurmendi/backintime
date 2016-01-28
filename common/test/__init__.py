@@ -1,5 +1,5 @@
 # Back In Time
-# Copyright (C) 2015 Germar Reitze
+# Copyright (C) 2015 Germar Reitze, Taylor Raack
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,7 +18,9 @@
 from test import test_applicationinstance
 from test import test_argparser
 from test import test_configfile
+from test import test_encfstools
 from test import test_snapshots
+from test import test_sshtools
 from test import test_tools
 
 if __name__ == '__main__':
