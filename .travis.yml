@@ -16,6 +16,10 @@ python:
   - "3.5-dev" # 3.5 development branch
   - "nightly" # currently points to 3.6-dev
 
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y sshfs
+
 install:
   - pip install coveralls
   # add ssh public / private key pair to ensure user can start ssh session to localhost for tests
