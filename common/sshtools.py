@@ -245,8 +245,8 @@ class SSH(mount.MountControl):
                                         universal_newlines = True)
                 output, error = proc.communicate()
                 if proc.returncode:
-                    logger.error('Failed to unlock SSH private key %s: %s'
-                                 %(self.private_key_file, error),
+                    logger.error('Failed to unlock SSH private key %s: %s (%s)'
+                                 %(self.private_key_file, error, output),
                                  self)
 
                 if self.password:
