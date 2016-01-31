@@ -6,9 +6,6 @@ language: python
 # ensures that we have UUID filesystem mounts for proper testing
 sudo: true
 
-#addons:
-#  ssh_known_hosts: localhost
-
 python:
   - "3.4"
   - "3.5"
@@ -17,6 +14,7 @@ python:
 
 install:
   - pip install coveralls
+# debugging some ssh items, will remove cruft momentarily...
   - ls -al ~/.ssh | echo "0"
   - ssh-keygen -b 2048 -t rsa -f /home/travis/.ssh/id_rsa -N ""
   - ls -al ~/.ssh
