@@ -45,10 +45,10 @@ class TestSSH(unittest.TestCase):
     def test_can_mount_ssh_rw(self):
         doOrWarn(lambda: self.internal_test(read_only = False, implicit_read_only = False))
         
-    def test_can_mount_ssh_ro_implicit(self):
+    def test_can_mount_ssh_ro_implicitly(self):
         doOrWarn(lambda: self.internal_test(read_only = True, implicit_read_only = True))
     
-    def test_can_mount_ssh_ro_explicit(self):
+    def test_can_mount_ssh_ro_explicitly(self):
         doOrWarn(lambda: self.internal_test(read_only = True, implicit_read_only = False))
         
     def internal_test(self, read_only, implicit_read_only):

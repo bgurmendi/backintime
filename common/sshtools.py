@@ -128,7 +128,7 @@ class SSH(mount.MountControl):
         env = os.environ.copy()
         if 'LC_ALL' in list(env.keys()):
             env['LC_ALL'] = 'C'
-        logger.info('Call mount command: %s'
+        logger.debug('Call mount command: %s'
                      %' '.join(sshfs),
                      self)
         try:
@@ -245,8 +245,8 @@ class SSH(mount.MountControl):
                                         universal_newlines = True)
                 output, error = proc.communicate()
                 if proc.returncode:
-                    logger.error('Failed to unlock SSH private key %s: %s (%s)'
-                                 %(self.private_key_file, error, output),
+                    logger.error('Failed to unlock SSH private key %s: %s'
+                                 %(self.private_key_file, error),
                                  self)
 
                 if self.password:
