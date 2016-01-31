@@ -19,6 +19,8 @@ python:
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y sshfs
+  # add travis user to fuse group
+  - sudo gpasswd -a travis fuse
 
 install:
   - pip install coveralls
