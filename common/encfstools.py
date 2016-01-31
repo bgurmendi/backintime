@@ -287,8 +287,8 @@ class EncFS_SSH(EncFS_mount):
         self.args = args
         self.kwargs = kwargs
 
-        self.ssh = sshtools.SSH(*self.args, symlink = False, read_only = self.read_only, **self.split_kwargs('ssh'))
-        self.rev_root = EncFS_mount(*self.args, symlink = False, read_only = self.read_only, **self.split_kwargs('encfs_reverse'))
+        self.ssh = sshtools.SSH(*self.args, symlink = False, **self.split_kwargs('ssh'))
+        self.rev_root = EncFS_mount(*self.args, symlink = False, **self.split_kwargs('encfs_reverse'))
         super(EncFS_SSH, self).__init__(*self.args, read_only = self.read_only, **self.split_kwargs('encfs'))
 
     def mount(self, *args, **kwargs):
@@ -311,7 +311,7 @@ class EncFS_SSH(EncFS_mount):
                 tmp_kwargs = self.split_kwargs('encfs_reverse')
                 tmp_kwargs['path'] = src
                 tmp_kwargs['config_path'] = src
-                tmp_mount = EncFS_mount(*self.args, symlink = False, read_only = self.read_only, **tmp_kwargs)
+                tmp_mount = EncFS_mount(*self.args, symlink = False, **tmp_kwargs)
                 tmp_mount.mount(*args, **kwargs)
                 tmp_mount.umount()
                 cfg = tmp_mount.get_config_file()
