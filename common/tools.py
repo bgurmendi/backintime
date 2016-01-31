@@ -1114,11 +1114,12 @@ def getSshKeyFingerprint(path):
     if not os.path.exists(path):
         return
     cmd = ['ssh-keygen', '-l', '-f', path]
-    proc = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = open(os.devnull, 'w'))
-    output = proc.communicate()[0]
-    m = re.match(b'\d+\s+([a-zA-Z0-9:]+).*', output)
-    if m:
-        return m.group(1).decode('UTF-8')
+    with open(os.devnull, 'w') as out:
+        proc = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = out)
+        output = proc.communicate()[0]
+        m = re.match(b'\d+\s+([a-zA-Z0-9:]+).*', output)
+        if m:
+            return m.group(1).decode('UTF-8')
 
 def readCrontab():
     """
