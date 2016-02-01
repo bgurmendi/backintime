@@ -608,6 +608,10 @@ class Snapshots:
                % {'path': path, 'quote': quote, 'suffix': self.config.find_suffix()}
         rm = 'rm -rf %(quote)s%(path)s%(quote)s' % {'path': path, 'quote': quote}
         if execute:
+            try:
+              self._execute(self.cmd_ssh(rm))
+            except:
+                pass
             self._execute(self.cmd_ssh(find, quote = True))
             self._execute(self.cmd_ssh(rm))
         else:
